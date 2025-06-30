@@ -11,7 +11,7 @@
 
 <body>
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center align-items-center min-vh-100">
             <div class="col-3">
 
             </div>
@@ -21,30 +21,45 @@
                     <h5 class="card-header bg-primary text-white">Log into your Account</h5>
                     <div class="card-body">
 
-                        <form>
+                        <form id="loginForm" action="/dashboard.html" method="POST">
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
-                                <input type="email" class="form-control" id="username"
-                                    aria-describedby="emailHelp">
+                                <input type="text" class="form-control" id="username" required>
                                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
+                                <input type="password" class="form-control" id="exampleInputPassword1" required>
                             </div>
                             <div class="mb-3 form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
                             </div>
+                            <button type="submit" class="btn btn-primary">Log in</button>
                         </form>
-
-                        <a href="/dashboard.html" class="btn btn-primary">Log in</a>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("loginForm");
+        const username = document.getElementById("username");
+        const password = document.getElementById("exampleInputPassword1");
+
+        form.addEventListener("submit", function (e) {
+            if (username.value.trim() === "" || password.value.trim() === "") {
+                e.preventDefault();
+                alert("Please enter both username and password.");
+                return;
+            }
+        });
+    });
+</script>
 
 
 
